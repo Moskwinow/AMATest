@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class BrandCell: UITableViewCell {
+public class BrandCell: UITableViewCell {
     
     var heartIsSelected: (()->())?
     var fillHeart: Bool = false {
@@ -59,7 +59,7 @@ class BrandCell: UITableViewCell {
         return imageView
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
         contentView.addSubviews(
@@ -73,11 +73,11 @@ class BrandCell: UITableViewCell {
         setNeedsLayout()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         movieImageView.snp.makeConstraints {
             $0.size.equalTo(CGSize(width: 50, height: 80))

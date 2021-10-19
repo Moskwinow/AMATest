@@ -7,26 +7,26 @@
 
 import Foundation
 
-struct ResponseModel: Decodable {
+public struct ResponseModel: Decodable {
     var page: Int
     var results: [Model]
 }
 
-struct Model: TypeModel, Codable, Equatable {
+public struct Model: TypeModel, Codable, Equatable {
     
-    var id: Int = 0
+    public var id: Int = 0
     
-    var title: String? = ""
+    public var title: String? = ""
     
-    var votes: Double = 0.0
+    public var votes: Double = 0.0
     
-    var overview: String = ""
+    public var overview: String = ""
     
-    var image: String = ""
+    public var image: String = ""
     
-    var name: String?
+    public var name: String?
     
-    var type: String = ""
+    public var type: String = ""
     
     private enum CodingKeys: String, CodingKey {
         case votes = "vote_average"

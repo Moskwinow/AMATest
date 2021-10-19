@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopShowController: UIViewController {
+public class TopShowController: UIViewController {
     
     var presenter: TopShowPresenterInput
     var favourites: [Model] = DefaultServiceManager.fetchFavourites() {
@@ -34,30 +34,30 @@ class TopShowController: UIViewController {
     
     // MARK: -  Life Cycle
     
-    init(presenter: TopShowPresenterInput) {
+    public init(presenter: TopShowPresenterInput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchController
         view.addSubviews(tableView)
         presenter.loadData(with: .show)
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.snp.makeConstraints {
             $0.size.equalToSuperview()
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         favourites = DefaultServiceManager.fetchFavourites()
@@ -75,7 +75,7 @@ class TopShowController: UIViewController {
 // MARK: -  Table view data source
 
 extension TopShowController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if presenter.isFiltering {
             return presenter.filteringModel.count
         } else {
@@ -83,7 +83,7 @@ extension TopShowController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: BrandCell = tableView.dequeueReusableCell(for: indexPath)
         var model: [TypeModel] = []
         if presenter.isFiltering {
@@ -113,7 +113,7 @@ extension TopShowController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if presenter.isFiltering {
             performToDetail(type: .show, id: presenter.filteringModel[indexPath.row].id)
         } else {
@@ -123,7 +123,7 @@ extension TopShowController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension TopShowController: TopShowPresenterOutput {
-    func refresh() {
+    public func refresh() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -131,7 +131,7 @@ extension TopShowController: TopShowPresenterOutput {
 }
 
 extension TopShowController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
+    public func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else {return}
         presenter.filterContentForSearchText(searchText)
     }

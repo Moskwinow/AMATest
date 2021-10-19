@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DetailTypeModel {
+public protocol DetailTypeModel {
     var id: Int {get set}
     var name: String? {get set}
     var title: String? {get set}
@@ -17,6 +17,6 @@ protocol DetailTypeModel {
     var votes: Double {get set}
 }
 
-struct Genres: Decodable {
+public struct Genres: Decodable {
     var name: String
 }

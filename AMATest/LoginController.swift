@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LoginController: UIViewController {
+public class LoginController: UIViewController {
     
     // MARK: -  Lazy Properties
     
@@ -69,17 +69,17 @@ class LoginController: UIViewController {
 
     // MARK: -  Life Cycle
     
-    init(presenter: LoginPresenterInput) {
+    public init(presenter: LoginPresenterInput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(backgroundContainerView)
         backgroundContainerView.addSubviews(
@@ -91,7 +91,7 @@ class LoginController: UIViewController {
         )
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         backgroundContainerView.snp.makeConstraints {
             $0.size.equalToSuperview()
@@ -156,17 +156,17 @@ class LoginController: UIViewController {
 
 extension LoginController: LoginPresenterOutput {
     
-    func performToTabBar() {
+    public func performToTabBar() {
         DispatchQueue.main.async {
             self.performToTabBarController()
         }
     }
     
-    func validateFields() {
+    public func validateFields() {
         loginButton.isEnabled = presenter.buttonIsEnable
         registerButton.isEnabled = presenter.buttonIsEnable
     }
-    func errorMessage(message: String) {
+    public func errorMessage(message: String) {
         DispatchQueue.main.async {
             self.warningTextLabel.text = message
         }

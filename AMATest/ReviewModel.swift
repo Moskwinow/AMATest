@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct ReviewModel: Codable {
+public struct ReviewModel: Codable {
     var results: [ReviewContent]
 }
 
-struct ReviewContent: Codable {
+public struct ReviewContent: Codable {
     var author: String
     var author_details: Author
     var content: String
 }
 
-struct Author: Codable {
+public struct Author: Codable {
     var avatar_path: String
 }

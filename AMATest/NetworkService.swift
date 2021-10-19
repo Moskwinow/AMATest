@@ -7,18 +7,18 @@
 
 import Foundation
 
-enum MovieType: String {
+public enum MovieType: String {
     case movie = "movie"
     case show = "tv"
 }
 
-protocol NetworkService {
+public protocol NetworkService {
     func loadData(type: MovieType, completion: @escaping(Result<[TypeModel], Error>) -> ())
     func loadDetailData(type: MovieType, with id: Int, completion: @escaping(Result<DetailTypeModel, Error>) -> ())
     func loadReviews(type: MovieType, with id: Int, completion: @escaping(Result<[ReviewContent], Error>) -> ())
 }
 
-class NetworkServiceManager: NetworkService {
+public class NetworkServiceManager: NetworkService {
     
     private let apiKey = "d4ceb5d78a68bdec35822ba4caf9f655"
     private let contentType = ["Content-Type": "application/json;charset=utf-8"]
@@ -26,7 +26,7 @@ class NetworkServiceManager: NetworkService {
         return "GET"
     }
     
-    func loadData(type: MovieType, completion: @escaping (Result<[TypeModel], Error>) -> ()) {
+    public func loadData(type: MovieType, completion: @escaping (Result<[TypeModel], Error>) -> ()) {
         let url = URL(string: "https://api.themoviedb.org/3/trending/\(type.rawValue)/day?api_key=\(apiKey)")!
         var request = URLRequest(url: url)
         request.httpMethod = method
@@ -43,7 +43,7 @@ class NetworkServiceManager: NetworkService {
         session.resume()
     }
     
-    func loadDetailData(type: MovieType, with id: Int, completion: @escaping (Result<DetailTypeModel, Error>) -> ()) {
+    public func loadDetailData(type: MovieType, with id: Int, completion: @escaping (Result<DetailTypeModel, Error>) -> ()) {
         let url = URL(string: "https://api.themoviedb.org/3/\(type.rawValue)/\(id)?api_key=d4ceb5d78a68bdec35822ba4caf9f655&language=en-US")
         var request = URLRequest(url: url!)
         request.httpMethod = method
@@ -60,7 +60,7 @@ class NetworkServiceManager: NetworkService {
         session.resume()
     }
     
-    func loadReviews(type: MovieType, with id: Int, completion: @escaping(Result<[ReviewContent], Error>) -> ()) {
+    public func loadReviews(type: MovieType, with id: Int, completion: @escaping(Result<[ReviewContent], Error>) -> ()) {
         let url = URL(string: "https://api.themoviedb.org/3/\(type.rawValue)/\(id)/reviews?api_key=d4ceb5d78a68bdec35822ba4caf9f655&language=en-US&page=1")
         var request = URLRequest(url: url!)
         request.httpMethod = method
