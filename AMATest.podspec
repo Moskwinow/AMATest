@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
 #
 
 spec.name         = "AMATest"
-spec.version      = "0.0.2"
+spec.version      = "0.0.3"
 spec.summary      = "A short description of AMATest."
 spec.description  = <<-DESC
 Try to keep it short, snappy and to the point.
@@ -86,6 +86,7 @@ spec.framework  = "UIKit"
 #  you can include multiple dependencies to ensure it works.
 spec.xcconfig = { 'SWIFT_INCLUDE_PATHS' => '$(PODS_ROOT)/Firebase/Core/Sources' }
 spec.requires_arc = true
+spec.ios.dependency 'FirebaseCore', '~> 8.8.0'
 spec.ios.dependency 'FirebaseAuth', '~> 8.8.0'
 spec.ios.dependency 'SnapKit', '~> 5.0.1'
 spec.ios.dependency 'Kingfisher', '~> 6.3.1'

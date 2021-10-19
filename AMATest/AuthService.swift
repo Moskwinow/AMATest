@@ -4,7 +4,7 @@
 //
 //  Created by Максим Вечирко on 18.05.2021.
 //
-
+import FirebaseCore
 import FirebaseAuth
 
 public enum AuthMethod {
@@ -19,8 +19,10 @@ public protocol AuthService {
 public final class AuthServiceManager: AuthService {
     
     public static func configurate() {
-//        FirebaseApp.configure()
+        FirebaseApp.configure()
     }
+    
+    public init() {}
     
     public func auth(_ method: AuthMethod, with email: String, and password: String, completion: @escaping (Result<String, Error>) -> ()) {
         switch method {
