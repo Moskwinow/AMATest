@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
 #
 
 spec.name         = "AMATest"
-spec.version      = "0.0.1"
+spec.version      = "0.0.2"
 spec.summary      = "A short description of AMATest."
 spec.description  = <<-DESC
 Try to keep it short, snappy and to the point.

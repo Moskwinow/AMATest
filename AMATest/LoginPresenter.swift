@@ -28,7 +28,7 @@ public final class LoginPresenter: LoginPresenterInput {
     
     private var authService: AuthService
     
-    init(authService: AuthService) {
+    public init(authService: AuthService) {
         self.authService = authService
     }
     
